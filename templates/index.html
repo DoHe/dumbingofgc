@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if comic %}
     <title>Mobile of age - {{ comic.title }}</title>
+    {% else %}
+    <title>Mobile of age - No comic 😥</title>
+    {% endif %}
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -13,8 +17,9 @@
 <body>
     <section class="section">
         <div class="container has-text-centered">
+            {% if comic %}
             <h1 class="title">
-                <a href="{{ comic.url }}">{{ comic.title }}</a>
+                <a href="{{ original_url }}">{{ comic.title }}</a>
             </h1>
             <div style="max-width: 1000px; display: inline-block">
                 <figure class="image main-image">
@@ -23,7 +28,7 @@
             </div>
             <p>{{ alt }}</p>
             <nav role="navigation" aria-label="pagination">
-                <a class="button is-rounded" href="{{ previous }}">
+                <a class="button is-rounded" href="/?c={{ comic.previous }}">
                     <span class="icon is-small">
                         <i class="fas fa-arrow-left"></i>
                     </span>
@@ -33,12 +38,15 @@
                         <i class="fas fa-home"></i>
                     </span>
                 </a>
-                <a class="button is-rounded" href="{{ next }}" {% if not next %} disabled {% endif %}>
+                <a class="button is-rounded" href="/?c={{ comic.next }}" {% if not comic.next %} disabled {% endif %}>
                     <span class="icon is-small">
                         <i class="fas fa-arrow-right"></i>
                     </span>
                 </a>
             </nav>
+            {% else %}
+            No comic with that id 😥
+            {% endif %}
         </div>
     </section>
 </body>
