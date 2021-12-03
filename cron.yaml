@@ -1,0 +1,4 @@
+cron:
+  - description: "daily summary job"
+    url: /tasks/scrape
+    schedule: every 6 hours
