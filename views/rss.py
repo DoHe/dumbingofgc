@@ -28,11 +28,11 @@ TEMPLATE = """
 def create_feed():
     fg = FeedGenerator()
     fg.id('https://dumbingofgc.uc.r.appspot.com/rss')
-    fg.title('Mobile of Age')
+    fg.title('Mobile of Age (GC)')
     fg.author({'name': 'Dom', 'email': 'dom@whatevs.de'})
     fg.link(href='https://dumbingofgc.uc.r.appspot.com/', rel='alternate')
-    fg.logo('https://dumbingofgc.uc.r.appspot.com/static/favicon.ico')
-    fg.subtitle('Dumbing of Age in mobile friendly')
+    fg.image('https://dumbingofgc.uc.r.appspot.com/static/favicon.ico')
+    fg.description('Dumbing of Age in mobile friendly')
     fg.link(href='https://dumbingofgc.uc.r.appspot.com/rss', rel='self')
     fg.language('en')
     return fg
